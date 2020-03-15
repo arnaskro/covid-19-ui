@@ -14,9 +14,21 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.24.0",
+    "axios": "^0.19.2",
+    "dayjs": "^1.8.22",
     "gatsby": "^2.19.7",
+    "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-google-analytics": "^2.1.37",
+    "gatsby-plugin-offline": "^3.0.40",
+    "gatsby-plugin-react-helmet": "^3.1.23",
+    "normalize.css": "^8.0.1",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-helmet": "^5.2.1",
+    "react-number-format": "^4.4.1",
+    "styled-components": "^5.0.1",
+    "warning": "^4.0.3"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
