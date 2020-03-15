@@ -74,6 +74,11 @@ const App = () => {
       <GlobalStyle isDark={isDark} />
       <Helmet>
         <title>COVID19 updates</title>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+        />
         <meta
           name="description"
           content="Updates on infections, deaths & recoveries from the COVID-19 (Coronavirus)"
