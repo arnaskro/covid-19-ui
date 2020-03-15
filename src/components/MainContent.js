@@ -7,7 +7,6 @@ import useData from "hooks/useData"
 import dayjs from "dayjs"
 import { Spinner, Button, MenuItem } from "@blueprintjs/core"
 import { Select } from "@blueprintjs/select"
-import Helmet from "react-helmet"
 
 const MainText = styled.div`
   margin-bottom: 3rem;
@@ -53,9 +52,6 @@ const MainContent = () => {
 
     return (
       <main>
-        <Helmet>
-          <meta property="og:image" content={summary.data.image} />
-        </Helmet>
         <Details>
           <p>
             Last Update: <i>{dayjs(summary.data.lastUpdate).format("L LTS")}</i>

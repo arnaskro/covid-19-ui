@@ -78,6 +78,7 @@ const App = () => {
           name="description"
           content="Updates on infections, deaths & recoveries from the COVID-19 (Coronavirus)"
         />
+        <meta property="og:image" content="https://covid19.mathdro.id/api/og" />
       </Helmet>
       <div id="main" className={isDark ? "bp3-dark" : ""}>
         <Header>
