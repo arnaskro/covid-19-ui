@@ -25,7 +25,9 @@ const Statistics = ({ loaded, error, data }) => {
         <StatCard label="Recovered" value={data.recovered.value} />
         <StatCard
           label="Infected"
-          value={data.confirmed.value - data.recovered.value}
+          value={
+            data.confirmed.value - data.recovered.value - data.deaths.value
+          }
         />
       </Cards>
     )

@@ -45,10 +45,6 @@ const GlobalStyle = createGlobalStyle`
     overflow: auto;
   }
 
-  #main {
-    width: 100%;
-  }
-
 `
 
 const Header = styled.header`
@@ -71,19 +67,7 @@ const Header = styled.header`
 `
 
 const App = () => {
-  const [isDark, setIsDark] = useState(
-    isClient() ? localStorage.getItem("theme") === "true" : false
-  )
-
-  const changeTheme = useCallback(
-    theme => {
-      if (isClient()) {
-        localStorage.setItem("theme", theme)
-      }
-      setIsDark(theme)
-    },
-    [setIsDark]
-  )
+  const [isDark, setIsDark] = useState(false)
 
   return (
     <>
@@ -105,7 +89,7 @@ const App = () => {
                 alignIndicator={"right"}
                 checked={isDark}
                 label={<Icon icon={isDark ? "moon" : "flash"} iconSize={16} />}
-                onChange={() => changeTheme(!isDark)}
+                onChange={() => setIsDark(!isDark)}
               />
             </Tooltip>
           </div>
