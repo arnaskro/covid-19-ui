@@ -11,13 +11,14 @@ const useData = (path = "", enabled = true, secondary = null) => {
   })
 
   useEffect(() => {
-    if (
-      enabled &&
-      !state.loading &&
-      (!state.loaded || (state.loaded && state.path !== path)) &&
-      !state.error
-    ) {
-      setState(state => ({ ...state, loading: true, loaded: false, path }))
+    if (enabled && !state.loading && state.path !== path) {
+      setState(state => ({
+        ...state,
+        loading: true,
+        loaded: false,
+        path,
+        error: null,
+      }))
 
       Api.get(path)
         .then(data => {
@@ -30,7 +31,7 @@ const useData = (path = "", enabled = true, secondary = null) => {
         })
         .catch(async err => {
           if (secondary) {
-            Api.get(secondary).then(data => {
+            return Api.get(secondary).then(data => {
               setState(state => ({
                 ...state,
                 loading: false,
@@ -38,7 +39,7 @@ const useData = (path = "", enabled = true, secondary = null) => {
                 data,
               }))
             })
-          } else throw new Error(err)
+          } else throw new Error(`API error. ${path}`)
         })
         .catch(err => {
           setState(state => ({
