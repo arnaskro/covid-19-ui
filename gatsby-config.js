@@ -10,16 +10,14 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "src": "src",
-          "components": "src/components",
-          "hooks": "src/hooks",
-          "pages": "src/pages",
-          "utils": "src/utils",
+          src: "src",
+          components: "src/components",
+          hooks: "src/hooks",
+          pages: "src/pages",
+          utils: "src/utils",
         },
-        extensions: [
-          "js",
-        ],
-      }
+        extensions: ["js"],
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -35,9 +33,9 @@ module.exports = {
         // Avoids sending pageview hits from custom paths
         exclude: [],
         // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0
+        pageTransitionDelay: 0,
       },
     },
-    `gatsby-plugin-react-helmet`
-  ]
+    `gatsby-plugin-react-helmet`,
+  ],
 }

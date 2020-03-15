@@ -1,17 +1,15 @@
 {
-    "projectName": "covid-19-ui",
-    "version": "3.0",
-    "frontend": "javascript",
-    "javascript": {
-        "framework": "react",
-        "config": {
-            "SourceDir": "src",
-            "DistributionDir": "public",
-            "BuildCommand": "npm run build",
-            "StartCommand": "npm run start"
-        }
-    },
-    "providers": [
-        "awscloudformation"
-    ]
+  "projectName": "covid-19-ui",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "public",
+      "BuildCommand": "npm run build",
+      "StartCommand": "npm run start"
+    }
+  },
+  "providers": ["awscloudformation"]
 }

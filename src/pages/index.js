@@ -4,14 +4,20 @@ import styled, { createGlobalStyle } from "styled-components"
 import "normalize.css/normalize.css"
 import "@blueprintjs/icons/lib/css/blueprint-icons.css"
 import "@blueprintjs/core/lib/css/blueprint.css"
-// import useCountries from "hooks/useCountries"
 import Footer from "components/Footer"
 import MainContent from "components/MainContent"
-import localizedFormat from 'dayjs/plugin/localizedFormat'
-import dayjs from 'dayjs'
-import { Button, Icon, Switch, Popover, Position, Tooltip, FocusStyleManager } from "@blueprintjs/core"
+import localizedFormat from "dayjs/plugin/localizedFormat"
+import {
+  FocusStyleManager,
+  Tooltip,
+  Switch,
+  Icon,
+  Position,
+} from "@blueprintjs/core"
+import { isClient } from "utils/layout"
+import dayjs from "dayjs"
 dayjs.extend(localizedFormat)
-FocusStyleManager.onlyShowFocusOnTabs();
+FocusStyleManager.onlyShowFocusOnTabs()
 
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -20,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-size: 1.125rem;
-    background: ${props => props.isDark ? '#293742' : 'rgb(255, 255, 255)'};
+    background: ${props => (props.isDark ? "#293742" : "rgb(255, 255, 255)")};
     transition: background 200ms ease, color 200ms ease;
 
     width: 100%;
@@ -34,6 +40,9 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  #main {
+    width: 100%;
+  }
 
 `
 
@@ -57,13 +66,19 @@ const Header = styled.header`
 `
 
 const App = () => {
-  const [isDark, setIsDark] = useState(localStorage.getItem("theme") === "true")
+  const [isDark, setIsDark] = useState(
+    isClient() ? localStorage.getItem("theme") === "true" : false
+  )
 
-  const changeTheme = useCallback((theme) => {
-    console.log("newTheme", theme)
-    localStorage.setItem("theme", theme)
-    setIsDark(theme)
-  }, [setIsDark])
+  const changeTheme = useCallback(
+    theme => {
+      if (isClient()) {
+        localStorage.setItem("theme", theme)
+      }
+      setIsDark(theme)
+    },
+    [setIsDark]
+  )
 
   return (
     <>
@@ -75,12 +90,18 @@ const App = () => {
           content="Updates on infections, deaths & recoveries from the COVID-19 (Coronavirus)"
         />
       </Helmet>
-      <div className={isDark ? 'bp3-dark' : ''}>
+      <div id="main" className={isDark ? "bp3-dark" : ""}>
         <Header>
           <h1>COVID19</h1>
           <div>
             <Tooltip content="Change theme" position={Position.LEFT}>
-              <Switch large={true} alignIndicator={"right"} checked={isDark} label={<Icon icon={isDark ? 'moon' : 'flash'} iconSize={16} />} onChange={() => changeTheme(!isDark)} />
+              <Switch
+                large={true}
+                alignIndicator={"right"}
+                checked={isDark}
+                label={<Icon icon={isDark ? "moon" : "flash"} iconSize={16} />}
+                onChange={() => changeTheme(!isDark)}
+              />
             </Tooltip>
           </div>
         </Header>

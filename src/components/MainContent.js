@@ -3,9 +3,8 @@ import styled from "styled-components"
 import NumberFormat from "react-number-format"
 import StatCard from "components/StatCard"
 import useData from "hooks/useData"
-// import useCountries from "hooks/useCountries"
 import dayjs from "dayjs"
-import { Spinner } from "@blueprintjs/core"
+import { Spinner, Button, Select } from "@blueprintjs/core"
 import Helmet from "react-helmet"
 
 const Details = styled.div`
@@ -24,8 +23,11 @@ const Cards = styled.div`
 `
 
 const MainContent = () => {
-  // const [country, setCountry] = useState()
+  // const [country, setCountry] = useData()
+  // const countries = useData('countries')
   const { loaded, data, error } = useData()
+
+  // console.log(countries.data)
 
   if (loaded)
     return (
@@ -53,6 +55,16 @@ const MainContent = () => {
           In this page you can see data about infections, deaths & recoveries
           and filter by country.
         </p>
+
+        {/* <Select
+          items={Films.items}
+          itemPredicate={Films.itemPredicate}
+          itemRenderer={Films.itemRenderer}
+          noResults={<MenuItem disabled={true} text="No results." />}
+          onItemSelect={...}
+        >
+            <Button text={Films.items[0].title} rightIcon="double-caret-vertical" />
+        </Select> */}
 
         <Cards>
           <StatCard label="Confirmed" value={data.confirmed.value} />

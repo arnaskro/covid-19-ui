@@ -1,6 +1,5 @@
-import React from 'react';
-import styled from 'styled-components'
-
+import React from "react"
+import styled from "styled-components"
 
 const FooterStyle = styled.footer`
   margin-top: 10vh;
@@ -26,7 +25,6 @@ const FooterStyle = styled.footer`
     }
   }
 
-
   @media (min-width: 48rem) {
     div {
       flex-grow: 1;
@@ -36,32 +34,40 @@ const FooterStyle = styled.footer`
 `
 
 const Footer = () => {
-
-
   return (
     <FooterStyle>
       <div>
         <label>Source Code</label>
-        <span><a href="https://github.com/arnaskro/covid-19-ui">covid-19-ui</a></span>
+        <span>
+          <a href="https://github.com/arnaskro/covid-19-ui">covid-19-ui</a>
+        </span>
       </div>
       <div>
         <label>API</label>
-        <span><a href="https://github.com/mathdroid/covid-19-api">covid-19-api</a></span>
+        <span>
+          <a href="https://github.com/mathdroid/covid-19-api">covid-19-api</a>
+        </span>
       </div>
       <div>
         <label>Contact me</label>
-        <span><a href="mailto:arnas@kromelis.lt">arnas@kromelis.lt</a></span>
+        <span>
+          <a href="mailto:arnas@kromelis.lt">arnas@kromelis.lt</a>
+        </span>
       </div>
       <div>
         <label>My website</label>
-        <span><a href="https://kromelis.lt">Kromelis.lt</a></span>
+        <span>
+          <a href="https://kromelis.lt">Kromelis.lt</a>
+        </span>
       </div>
       <div>
         <label>UI toolkit</label>
-        <span><a href="https://blueprintjs.com/">Blueprint</a></span>
+        <span>
+          <a href="https://blueprintjs.com/">Blueprint</a>
+        </span>
       </div>
     </FooterStyle>
   )
 }
 
-export default Footer;
+export default Footer
