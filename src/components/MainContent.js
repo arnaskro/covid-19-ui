@@ -15,6 +15,7 @@ const MainText = styled.div`
 
 const SelectWrapper = styled.div`
   max-height: 32rem;
+  margin-bottom: 1rem;
 `
 
 const Details = styled.div`
