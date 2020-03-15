@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"
 import Api from "utils/Api"
 
-const useData = (path = "") => {
+const useData = (path = "", enabled = true, secondary = null) => {
   const [state, setState] = useState({
+    path: null,
     loading: false,
     loaded: false,
     error: null,
@@ -10,12 +11,34 @@ const useData = (path = "") => {
   })
 
   useEffect(() => {
-    if (!state.loading && !state.loaded && !state.error) {
-      setState(state => ({ ...state, loading: true, loaded: false }))
+    if (
+      enabled &&
+      !state.loading &&
+      (!state.loaded || (state.loaded && state.path !== path)) &&
+      !state.error
+    ) {
+      setState(state => ({ ...state, loading: true, loaded: false, path }))
 
       Api.get(path)
         .then(data => {
-          setState(state => ({ ...state, loading: false, loaded: true, data }))
+          setState(state => ({
+            ...state,
+            loading: false,
+            loaded: true,
+            data,
+          }))
+        })
+        .catch(async err => {
+          if (secondary) {
+            Api.get(secondary).then(data => {
+              setState(state => ({
+                ...state,
+                loading: false,
+                loaded: true,
+                data,
+              }))
+            })
+          } else throw new Error(err)
         })
         .catch(err => {
           setState(state => ({
@@ -26,7 +49,7 @@ const useData = (path = "") => {
           }))
         })
     }
-  }, [state])
+  }, [secondary, path, state, enabled])
 
   return state
 }

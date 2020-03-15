@@ -40,6 +40,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .bp3-menu {
+    max-height: 25rem;
+    overflow: auto;
+  }
+
   #main {
     width: 100%;
   }
