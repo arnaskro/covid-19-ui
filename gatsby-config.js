@@ -36,6 +36,19 @@ module.exports = {
         pageTransitionDelay: 0,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `COVID19 Updates`,
+        short_name: `COVID19`,
+        start_url: `/`,
+        background_color: `#000`,
+        theme_color: `#fff`,
+        display: `minimal-ui`,
+        icon: `/favicon.ico`, // This path is relative to the root of the site.
+      },
+    },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-offline`
   ],
 }
